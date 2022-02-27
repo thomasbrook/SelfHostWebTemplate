@@ -17,7 +17,6 @@ using Bing.NetFramework.TransactionScope;
 using Bing.NetFramework.SqlTransaction;
 using System.Net.Http;
 using SelfHostWeb.SwaggerExtension;
-using ApiTemplate.Bll.IDal;
 using ApiTemplate.Sqlite.Dal;
 
 namespace SelfHostWeb.WebApi
