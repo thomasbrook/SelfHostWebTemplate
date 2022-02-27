@@ -34,3 +34,7 @@ autofac 官网 ：https://autofac.org
     Microsoft.Owin 4.2.0
     Microsoft.Owin.Host.HttpListener 4.2.0
     Microsoft.Owin.Hosting 4.2.0
+
+#### SQLite
+    
+    注意 System.Data.SQLite 依赖于 SQLite.Interop.dll x64/x86版本。如果 SQLite 驱动运行报错，请确认 bin 目录下是否存在 x64/SQLite.Interop.dll，x86/SQLite.Interop.dll。
