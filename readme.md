@@ -1,6 +1,7 @@
 ### SelfHost WebApi service Template
 
 集成 log4net、Swagger、Autofac、Dapper、Castle 等类库，对 TransactionScope、IDBTransaction 用动态代理进行了封装。 
+
 swagger：http://localhost:9000/swagger 
 
 #### 目标框架
