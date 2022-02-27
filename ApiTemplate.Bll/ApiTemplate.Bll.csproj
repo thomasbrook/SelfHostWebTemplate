@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F1C3364C-CA67-48CB-BA23-11962944032A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ApiTemplate.Bll</RootNamespace>
+    <AssemblyName>ApiTemplate.Bll</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Anchor.cs" />
+    <Compile Include="DataSource\DataSourceBll.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ApiTemplate.Bll.IDal\ApiTemplate.Bll.IDal.csproj">
+      <Project>{D360F047-1E9B-4F6F-AFF3-CA75030B88F6}</Project>
+      <Name>ApiTemplate.Bll.IDal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ApiTemplate.Model\ApiTemplate.Model.csproj">
+      <Project>{0fd78aaa-41e4-4199-90bf-07b15bf17b33}</Project>
+      <Name>ApiTemplate.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bing.NetFramework\Bing.NetFramework.csproj">
+      <Project>{c61f9f67-4d30-4e29-9736-b8cdad51e9f4}</Project>
+      <Name>Bing.NetFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SelfHostWeb.IBll\SelfHostWeb.IBll.csproj">
+      <Project>{1D0FEE07-A7F9-4029-8BC3-2492825CAE87}</Project>
+      <Name>SelfHostWeb.IBll</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

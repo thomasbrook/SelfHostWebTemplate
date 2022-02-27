@@ -1,0 +1,13 @@
+# rar ignore
+*.rar
+.DS_Store
+# all exe
+*.exe
+bin
+obj
+packages
+*.user
+.vs
+*.suo
+*.bat
+.idea
