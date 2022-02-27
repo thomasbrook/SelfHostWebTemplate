@@ -1,10 +1,11 @@
 ### SelfHost WebApi service Template
 
-集成 log4net、Swagger、Autofac、Dapper、Castle 等类库，对 TransactionScope、IDBTransaction 用动态代理进行了封装。
+集成 log4net、Swagger、Autofac、Dapper、Castle 等类库，对 TransactionScope、IDBTransaction 用动态代理进行了封装。 
+swagger：http://localhost:9000/swagger 
 
 #### 目标框架
 
-  .NET Framework 4.5
+    .NET Framework 4.5
 
 #### 引用类库
 
@@ -17,7 +18,6 @@
     Dapper 1.50.0.0
     Dapper.Contrib 1.50.0.0
     System.Data.SQLite 1.0.115.5
-
 
 #### SelfHost
 
