@@ -9,6 +9,11 @@ namespace SelfHostWeb.Controller
 {
     public class TestController : ApiController
     {
+        public TestController(string name)
+        {
+
+        }
+
         public dynamic TestStudents(string name, Student stu)
         {
             return new
