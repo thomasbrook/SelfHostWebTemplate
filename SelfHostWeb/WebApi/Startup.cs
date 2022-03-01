@@ -1,5 +1,8 @@
 ﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
+using Autofac.Integration.WebApi;
+using Bing.NetFramework.TransactionScope;
+using Bing.NetFramework.SqlTransaction;
 using Microsoft.Owin;
 using Owin;
 using System;
@@ -11,10 +14,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using Autofac.Integration.WebApi;
 using Swashbuckle.Application;
-using Bing.NetFramework.TransactionScope;
-using Bing.NetFramework.SqlTransaction;
 using System.Net.Http;
 using SelfHostWeb.SwaggerExtension;
 using ApiTemplate.Sqlite.Dal;
@@ -54,9 +54,6 @@ namespace SelfHostWeb.WebApi
                 routeTemplate: "api/{controller}/{action}",
                 defaults: new { id = RouteParameter.Optional }
             );
-
-            // 加载外部程序集
-            Assembly.Load("SelfHostWeb.Controller");
 
             // 配置 http 服务的路由
             var cors = new EnableCorsAttribute("*", "*", "*");//跨域允许设置
@@ -191,7 +188,9 @@ namespace SelfHostWeb.WebApi
         {
             var builder = new ContainerBuilder();
 
-            //注册 api Controller
+            // 注册加载外部程序集 ApiController
+            builder.RegisterApiControllers(Assembly.Load("SelfHostWeb.Controller"));
+            // 注册当前程序集 ApiController
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             builder.RegisterWebApiFilterProvider(config);
             builder.RegisterWebApiModelBinderProvider();
