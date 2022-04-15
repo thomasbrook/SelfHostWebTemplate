@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SelfHostWeb.WebApi.Parts
+namespace ApiTemplate.Controller.Parts
 {
     public class SimpleException
     {

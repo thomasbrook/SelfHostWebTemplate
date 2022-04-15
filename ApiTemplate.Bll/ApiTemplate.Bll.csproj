@@ -59,10 +59,6 @@
       <Project>{c61f9f67-4d30-4e29-9736-b8cdad51e9f4}</Project>
       <Name>Bing.NetFramework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SelfHostWeb.IBll\SelfHostWeb.IBll.csproj">
-      <Project>{1D0FEE07-A7F9-4029-8BC3-2492825CAE87}</Project>
-      <Name>SelfHostWeb.IBll</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

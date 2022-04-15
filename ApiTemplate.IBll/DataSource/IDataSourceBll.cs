@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SelfHostWeb.IBll.DataSource
+namespace ApiTemplate.IBll.DataSource
 {
     public interface IDataSourceBll
     {

@@ -16,12 +16,12 @@ namespace Bing.NetFramework.DbConnection
         {
             if (dbTransaction == null)
             {
-                var filePath = GetConnectionStr(SqliteBAConn);
-                var sqliteBAConn = new SQLiteConnection($"data source={filePath}");
+                var filePath = GetConnectionString(ConnectionString);
+                var sqliteConn = new SQLiteConnection($"data source={filePath}");
 
-                sqliteBAConn.Open();
+                sqliteConn.Open();
 
-                dbTransaction = sqliteBAConn.BeginTransaction();
+                dbTransaction = sqliteConn.BeginTransaction();
             }
 
             if (isSqlTransactionHandlerAttribute) SqlGlobalTrans = dbTransaction;
@@ -63,13 +63,7 @@ namespace Bing.NetFramework.DbConnection
             {
                 return;
             }
-
-            if (sqliteBAConn != null)
-            {
-                //sqliteBAConn.Dispose();
-                //sqliteBAConn = null;
-                return;
-            }
+           
         }
 
         #endregion

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SelfHostWeb.Model
+namespace ApiTemplate.Model.Dto
 {
-    public class StudentInfo
+    public class StudentInfoDto
     {
         private string studentName;
         private string studentId;

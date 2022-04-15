@@ -22,7 +22,7 @@ namespace ApiTemplate.Sqlite.Dal.DataSource
 
         public bool Insert(DataSourcePo po)
         {
-            var conn = GetConnectionForBA();
+            var conn = GetConnection();
             var count = conn.Insert<DataSourcePo>(po);
             return count > 0;
         }

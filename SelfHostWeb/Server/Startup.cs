@@ -19,7 +19,7 @@ using System.Net.Http;
 using SelfHostWeb.SwaggerExtension;
 using ApiTemplate.Sqlite.Dal;
 
-namespace SelfHostWeb.WebApi
+namespace SelfHostWeb.Server
 {
     class Startup
     {
@@ -47,6 +47,9 @@ namespace SelfHostWeb.WebApi
         public HttpConfiguration InitWebApiConfig()
         {
             var config = new HttpConfiguration();
+
+            // 异常过滤器
+            config.Filters.Add(new WebApiExceptionFilterAttribute());
 
             //config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(
@@ -190,8 +193,9 @@ namespace SelfHostWeb.WebApi
 
             // 注册加载外部程序集 ApiController
             builder.RegisterApiControllers(Assembly.Load("SelfHostWeb.Controller"));
+
             // 注册当前程序集 ApiController
-            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+            //builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             builder.RegisterWebApiFilterProvider(config);
             builder.RegisterWebApiModelBinderProvider();
 

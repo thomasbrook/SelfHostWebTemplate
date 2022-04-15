@@ -1,4 +1,5 @@
 ﻿using Microsoft.Owin.Hosting;
+using SelfHostWeb.Server;
 using System;
 using System.Configuration;
 

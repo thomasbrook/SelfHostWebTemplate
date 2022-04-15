@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using SelfHostWeb.SwaggerExtension;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace SelfHostWeb.WebApi.Parts
+namespace ApiTemplate.Controller.Parts
 {
     public static class ApiControllerExtend
     {

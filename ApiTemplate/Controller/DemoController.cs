@@ -1,19 +1,21 @@
-﻿using ApiTemplate.Model.Po;
+﻿using ApiTemplate.Model.Dto;
+using ApiTemplate.Model.Po;
 using log4net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using ApiTemplate.Controller.Parts;
 using SelfHostWeb.IBll.DataSource;
-using SelfHostWeb.Model;
-using SelfHostWeb.WebApi.Parts;
 using Swashbuckle.Swagger.Annotations;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace SelfHostWeb.WebApi.Controller
+namespace ApiTemplate.Controller
 {
-    [WebApiExceptionFilter]
     public class DemoController : ApiController
     {
         private static readonly ILog _log = LogManager.GetLogger("ProgramLog");
@@ -30,9 +32,9 @@ namespace SelfHostWeb.WebApi.Controller
             {
                 result = true,
                 desc = "请求成功",
-                data = new List<StudentInfo>()
+                data = new List<StudentInfoDto>()
                 {
-                    new StudentInfo
+                    new StudentInfoDto
                     {
                         ClassId="ClassID982712311231",
                         Sex="男",
@@ -40,7 +42,7 @@ namespace SelfHostWeb.WebApi.Controller
                         StudentName="男学生一枚",
                         StudentNumber="XH2018090001"
                     },
-                    new StudentInfo
+                    new StudentInfoDto
                     {
                         ClassId="ClassID982712311232",
                         Sex="女",
@@ -65,7 +67,7 @@ namespace SelfHostWeb.WebApi.Controller
             var resp = new ResponseModel<dynamic>();
             resp.Data = new { Count = result.Count, Data = result };
             resp.ExMessage = null;
-            resp.StatusCode = (int)HttpStatusCode.OK; // HttpStatusCode.BadRequest;
+            resp.StatusCode = HttpStatusCode.OK;
 
             return this.SerialResponseMessage(resp, new IsoDateTimeConverter() { DateTimeFormat = "yyyy-MM-dd HH:mm:ss" });
         }
@@ -90,7 +92,7 @@ namespace SelfHostWeb.WebApi.Controller
             var resp = new ResponseModel<DataSourcePo>();
             resp.Data = result;
             resp.ExMessage = null;
-            resp.StatusCode = (int)HttpStatusCode.OK; // HttpStatusCode.BadRequest;
+            resp.StatusCode = HttpStatusCode.OK;
 
             return this.SerialResponseMessage(resp, new IsoDateTimeConverter() { DateTimeFormat = "yyyy-MM-dd HH:mm:ss" });
         }
@@ -111,12 +113,12 @@ namespace SelfHostWeb.WebApi.Controller
                 var result = _dataSourceBll.InsertDataSourceTestWithSqlTransAttribute(t);
                 resp.Data = result ? "事务执行成功" : "事务执行失败";
                 resp.ExMessage = null;
-                resp.StatusCode = (int)HttpStatusCode.OK; // HttpStatusCode.BadRequest;
+                resp.StatusCode = HttpStatusCode.OK;
             }
             catch (Exception ex)
             {
                 resp.ExMessage = ex.Message;
-                resp.StatusCode = (int)HttpStatusCode.BadRequest;
+                resp.StatusCode = HttpStatusCode.BadRequest;
             }
 
             return this.SerialResponseMessage(resp, new IsoDateTimeConverter() { DateTimeFormat = "yyyy-MM-dd HH:mm:ss" });
@@ -139,12 +141,12 @@ namespace SelfHostWeb.WebApi.Controller
 
                 resp.Data = result ? "事务执行成功" : "事务执行失败";
                 resp.ExMessage = null;
-                resp.StatusCode = (int)HttpStatusCode.OK; // HttpStatusCode.BadRequest;
+                resp.StatusCode = HttpStatusCode.OK;
             }
             catch (Exception ex)
             {
                 resp.ExMessage = ex.Message;
-                resp.StatusCode = (int)HttpStatusCode.BadRequest;
+                resp.StatusCode = HttpStatusCode.BadRequest;
             }
 
             return this.SerialResponseMessage(resp, new IsoDateTimeConverter() { DateTimeFormat = "yyyy-MM-dd HH:mm:ss" });
@@ -169,12 +171,12 @@ namespace SelfHostWeb.WebApi.Controller
 
                 resp.Data = result ? "事务执行成功" : "事务执行失败";
                 resp.ExMessage = null;
-                resp.StatusCode = (int)HttpStatusCode.OK; // HttpStatusCode.BadRequest;
+                resp.StatusCode = HttpStatusCode.OK;
             }
             catch (Exception ex)
             {
                 resp.ExMessage = ex.Message;
-                resp.StatusCode = (int)HttpStatusCode.BadRequest;
+                resp.StatusCode = HttpStatusCode.BadRequest;
             }
 
             return this.SerialResponseMessage(resp, new IsoDateTimeConverter() { DateTimeFormat = "yyyy-MM-dd HH:mm:ss" });

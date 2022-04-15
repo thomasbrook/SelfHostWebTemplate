@@ -17,10 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfHostWeb", "SelfHostWeb\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTemplate.Bll.IDal", "ApiTemplate.Bll.IDal\ApiTemplate.Bll.IDal.csproj", "{D360F047-1E9B-4F6F-AFF3-CA75030B88F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfHostWeb.IBll", "SelfHostWeb.IBll\SelfHostWeb.IBll.csproj", "{1D0FEE07-A7F9-4029-8BC3-2492825CAE87}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfHostWeb.Controller", "SelfHostWeb.Controller\SelfHostWeb.Controller.csproj", "{891C98F9-42C5-4F26-BA71-7AB3C1505169}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{70A3A286-BEFC-4FFF-8BDA-935ACD2BADB2}"
 	ProjectSection(SolutionItems) = preProject
 		Database\DatasourceConnection.sql = Database\DatasourceConnection.sql
@@ -29,6 +25,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Database\x86\SQLite.Interop.dll = Database\x86\SQLite.Interop.dll
 		Database\TestDb.db = Database\TestDb.db
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{798C7EEE-360B-4149-8A9D-321E5F28A8A1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{335FAB8C-5A58-4CA7-BCB7-CC3A82EF0624}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controller", "Controller", "{0003B671-8CE7-4CA7-8B62-EB0044BC3735}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTemplate", "WebTemplate\WebTemplate.csproj", "{EE32C3A9-4CFF-4B81-991A-09CE5CC4CF28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTemplate", "ApiTemplate\ApiTemplate.csproj", "{891C98F9-42C5-4F26-BA71-7AB3C1505169}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTemplate.IBll", "ApiTemplate.IBll\ApiTemplate.IBll.csproj", "{1D0FEE07-A7F9-4029-8BC3-2492825CAE87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,17 +72,28 @@ Global
 		{D360F047-1E9B-4F6F-AFF3-CA75030B88F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D360F047-1E9B-4F6F-AFF3-CA75030B88F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D360F047-1E9B-4F6F-AFF3-CA75030B88F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1D0FEE07-A7F9-4029-8BC3-2492825CAE87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1D0FEE07-A7F9-4029-8BC3-2492825CAE87}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1D0FEE07-A7F9-4029-8BC3-2492825CAE87}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1D0FEE07-A7F9-4029-8BC3-2492825CAE87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE32C3A9-4CFF-4B81-991A-09CE5CC4CF28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE32C3A9-4CFF-4B81-991A-09CE5CC4CF28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE32C3A9-4CFF-4B81-991A-09CE5CC4CF28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE32C3A9-4CFF-4B81-991A-09CE5CC4CF28}.Release|Any CPU.Build.0 = Release|Any CPU
 		{891C98F9-42C5-4F26-BA71-7AB3C1505169}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{891C98F9-42C5-4F26-BA71-7AB3C1505169}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{891C98F9-42C5-4F26-BA71-7AB3C1505169}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{891C98F9-42C5-4F26-BA71-7AB3C1505169}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D0FEE07-A7F9-4029-8BC3-2492825CAE87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D0FEE07-A7F9-4029-8BC3-2492825CAE87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D0FEE07-A7F9-4029-8BC3-2492825CAE87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D0FEE07-A7F9-4029-8BC3-2492825CAE87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F1C3364C-CA67-48CB-BA23-11962944032A} = {798C7EEE-360B-4149-8A9D-321E5F28A8A1}
+		{69118F51-4410-4F3C-ADAC-3D148019733F} = {335FAB8C-5A58-4CA7-BCB7-CC3A82EF0624}
+		{D360F047-1E9B-4F6F-AFF3-CA75030B88F6} = {798C7EEE-360B-4149-8A9D-321E5F28A8A1}
+		{891C98F9-42C5-4F26-BA71-7AB3C1505169} = {0003B671-8CE7-4CA7-8B62-EB0044BC3735}
+		{1D0FEE07-A7F9-4029-8BC3-2492825CAE87} = {0003B671-8CE7-4CA7-8B62-EB0044BC3735}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {63D37BBA-ED4A-42F9-844C-42DE377C836D}

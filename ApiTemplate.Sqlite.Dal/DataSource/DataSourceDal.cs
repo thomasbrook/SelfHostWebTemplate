@@ -33,7 +33,7 @@ namespace ApiTemplate.Dal.Sqlite.DataSource
         {
             using (this)
             {
-                var conn = GetConnectionForBA();
+                var conn = GetConnection();
                 DataSourcePo model = conn.Get<DataSourcePo>(Id);
                 //model = conn.QuerySingle<DataSourcePo>("SELECT * FROM DatasourceConnection WHERE IID = @IID", new { IID = Id });
                 return model;
@@ -44,7 +44,7 @@ namespace ApiTemplate.Dal.Sqlite.DataSource
         {
             using (this)
             {
-                var conn = GetConnectionForBA();
+                var conn = GetConnection();
                 var count = conn.Insert<DataSourcePo>(model);
 
                 return count > 0;
@@ -55,7 +55,7 @@ namespace ApiTemplate.Dal.Sqlite.DataSource
         {
             using (this)
             {
-                var conn = GetConnectionForBA();
+                var conn = GetConnection();
                 var dataSources = conn.Query<DataSourcePo>("SELECT * FROM DatasourceConnection").ToList();
                 return dataSources;
             }

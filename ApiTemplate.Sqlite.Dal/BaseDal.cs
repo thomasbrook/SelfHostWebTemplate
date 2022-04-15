@@ -14,7 +14,7 @@ namespace ApiTemplate.Sqlite.Dal
     {
         public bool Delete<T>(T t) where T : class
         {
-            using (var conn = GetConnectionForBA())
+            using (var conn = GetConnection())
             {
                 return conn.Delete<T>(t);
             }
@@ -22,7 +22,7 @@ namespace ApiTemplate.Sqlite.Dal
 
         public bool Delete<T>(List<T> t) where T : class
         {
-            using (var conn = GetConnectionForBA())
+            using (var conn = GetConnection())
             {
                 return conn.Delete<List<T>>(t);
             }
@@ -30,7 +30,7 @@ namespace ApiTemplate.Sqlite.Dal
 
         public T Get<T>(string id) where T : class
         {
-            using (var conn = GetConnectionForBA())
+            using (var conn = GetConnection())
             {
                 return conn.Get<T>(id);
             }
@@ -38,7 +38,7 @@ namespace ApiTemplate.Sqlite.Dal
 
         public IEnumerable<T> GetAll<T>() where T : class
         {
-            using (var conn = GetConnectionForBA())
+            using (var conn = GetConnection())
             {
                 return conn.GetAll<T>();
             }
@@ -46,7 +46,7 @@ namespace ApiTemplate.Sqlite.Dal
 
         public bool Insert<T>(T t) where T : class
         {
-            using (var conn = GetConnectionForBA())
+            using (var conn = GetConnection())
             {
                 return conn.Insert<T>(t) > 0;
             }
@@ -54,7 +54,7 @@ namespace ApiTemplate.Sqlite.Dal
 
         public bool Insert<T>(List<T> t) where T : class
         {
-            using (var conn = GetConnectionForBA())
+            using (var conn = GetConnection())
             {
                 return conn.Insert<List<T>>(t) > 0;
             }
@@ -62,7 +62,7 @@ namespace ApiTemplate.Sqlite.Dal
 
         public bool Update<T>(T t) where T : class
         {
-            using (var conn = GetConnectionForBA())
+            using (var conn = GetConnection())
             {
                 return conn.Update<T>(t);
             }
@@ -70,7 +70,7 @@ namespace ApiTemplate.Sqlite.Dal
 
         public bool Update<T>(List<T> t) where T : class
         {
-            using (var conn = GetConnectionForBA())
+            using (var conn = GetConnection())
             {
                 return conn.Update<List<T>>(t);
             }

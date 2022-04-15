@@ -13,19 +13,13 @@ namespace Bing.NetFramework.DbConnection
 {
     public abstract class SqliteConnector
     {
-        protected readonly string SqliteBAConn = "SqliteBAConn";
-        protected readonly string SqliteMetaConn = "SqliteMetaConn";
-
-        protected static volatile IDbConnection sqliteBAConn = null;
-        protected static volatile IDbConnection sqliteMetaConn = null;
+        protected readonly string ConnectionString = "SqliteBAConn";
 
         protected IDbTransaction SqlTrans = null;
         protected static volatile IDbTransaction SqlGlobalTrans = null;
         protected static volatile IDbConnection TransactionScopeConn = null;
 
-        private static object locker = new object();
-
-        protected string GetConnectionStr(string key)
+        protected string GetConnectionString(string key)
         {
             // 相对路径
             var connString = ConfigurationManager.ConnectionStrings[key].ConnectionString;
@@ -35,9 +29,7 @@ namespace Bing.NetFramework.DbConnection
             return filePath;
         }
 
-
-        #region Connection
-        protected IDbConnection GetConnectionForBA()
+        protected IDbConnection GetConnection()
         {
             // 启用 TransactionScopeHandlerAttribute，需要打开连接，才会进入环境事务中。
             if (Transaction.Current != null)
@@ -46,7 +38,7 @@ namespace Bing.NetFramework.DbConnection
                     && TransactionScopeConn.State == ConnectionState.Open)
                     return TransactionScopeConn;
 
-                var filePath = GetConnectionStr(SqliteBAConn);
+                var filePath = GetConnectionString(ConnectionString);
                 TransactionScopeConn = new SQLiteConnection($"data source={filePath}");
 
                 TransactionScopeConn.Open();
@@ -65,46 +57,7 @@ namespace Bing.NetFramework.DbConnection
                 return SqlTrans.Connection;
             }
 
-            // 未开启事务
-            //if (sqliteBAConn == null)
-            //{
-            //    lock (locker)
-            //    {
-            //        if (sqliteBAConn == null)
-            //        {
-            //            var filePath = GetConnectionStr(SqliteBAConn);
-            //            sqliteBAConn = new SQLiteConnection($"data source={filePath}");
-            //        }
-            //    }
-            //}
-
-            sqliteBAConn = new SQLiteConnection($"data source={ GetConnectionStr(SqliteBAConn)}");
-
-            return sqliteBAConn;
+            return new SQLiteConnection($"data source={ GetConnectionString(ConnectionString)}");
         }
-
-        protected IDbConnection GetConnectionForMeta()
-        {
-            if (SqlTrans != null)
-            {
-                return SqlTrans.Connection;
-            }
-
-            if (sqliteMetaConn == null)
-            {
-                lock (locker)
-                {
-                    if (sqliteMetaConn == null)
-                    {
-                        var filePath = GetConnectionStr(SqliteMetaConn);
-                        sqliteMetaConn = new SQLiteConnection($"data source={filePath}");
-                    }
-                }
-            }
-
-            return sqliteMetaConn;
-        }
-
-        #endregion
     }
 }

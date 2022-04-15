@@ -1,14 +1,16 @@
 ﻿using Newtonsoft.Json;
-using SelfHostWeb.SwaggerExtension;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http.Filters;
 
-namespace SelfHostWeb.WebApi.Parts
+namespace ApiTemplate.Controller.Parts
 {
     public class WebApiAuthAttribute : ActionFilterAttribute
     {
@@ -18,12 +20,12 @@ namespace SelfHostWeb.WebApi.Parts
             {
                 if (actionContext.Request.Headers.Authorization != null)
                 {
-                    var encryptedKey = System.Web.HttpUtility.UrlDecode(actionContext.Request.Headers.Authorization.ToString());
+                    var encryptedKey = HttpUtility.UrlDecode(actionContext.Request.Headers.Authorization.ToString());
 
                     if (!ValidateToken(encryptedKey))
                     {
                         var rm = new ResponseModel<string>();
-                        rm.StatusCode = 410;
+                        rm.StatusCode = HttpStatusCode.Gone;
 
                         var countresult = JsonConvert.SerializeObject(rm, Newtonsoft.Json.Formatting.Indented);
                         actionContext.Response = new HttpResponseMessage { Content = new StringContent(countresult, Encoding.GetEncoding("UTF-8"), "text/plain") };
@@ -32,7 +34,7 @@ namespace SelfHostWeb.WebApi.Parts
                 else
                 {
                     var rm = new ResponseModel<string>();
-                    rm.StatusCode = 412;
+                    rm.StatusCode = HttpStatusCode.PreconditionFailed;
 
                     var countresult = JsonConvert.SerializeObject(rm, Newtonsoft.Json.Formatting.Indented);
                     actionContext.Response = new HttpResponseMessage { Content = new StringContent(countresult, Encoding.GetEncoding("UTF-8"), "text/plain") };
